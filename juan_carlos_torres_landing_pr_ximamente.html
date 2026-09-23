@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juan Carlos Torres | Cantante · Showman - Próximamente</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Script, Elegant Serif, and Modern Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700;900&family=Great+Vibes&family=Montserrat:wght@200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* Base Dark Background */
+        body {
+            background-color: #0a0a0c;
+            color: #e2e8f0;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* High-End Metallic Silver Text Gradient */
+        .text-silver-chrome {
+            background: linear-gradient(
+                135deg, 
+                #8a939e 0%, 
+                #cfd6df 18%, 
+                #ffffff 42%, 
+                #9ba3af 55%, 
+                #ffffff 78%, 
+                #717985 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0px 2px 12px rgba(255, 255, 255, 0.18));
+        }
+
+        .text-silver-light {
+            background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Metallic Border & Glassmorphism Container */
+        .glass-card {
+            background: rgba(14, 15, 20, 0.65);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .glass-card-hover {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card-hover:hover {
+            border-color: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 25px rgba(255, 255, 255, 0.08);
+            transform: translateY(-3px);
+        }
+
+        /* Font Family Helpers */
+        .font-script-jc {
+            font-family: 'Great Vibes', cursive;
+        }
+        .font-script-name {
+            font-family: 'Alex Brush', cursive;
+        }
+        .font-serif-subtitle {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.32em;
+        }
+
+        /* Metallic Button Sheen Effect */
+        .btn-chrome {
+            background: linear-gradient(135deg, #2a2d34 0%, #4a4f5a 30%, #a3acb9 50%, #3a3e47 70%, #1e2026 100%);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .btn-chrome::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                60deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.4) 50%,
+                transparent 70%
+            );
+            transform: rotate(30deg) translateX(-100%);
+            transition: transform 0.8s ease;
+        }
+        .btn-chrome:hover::before {
+            transform: rotate(30deg) translateX(100%);
+        }
+        .btn-chrome:hover {
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Shimmer Animation for Badges */
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .badge-shimmer {
+            background: linear-gradient(90deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.05) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 3.5s infinite;
+        }
+
+        /* Sound Wave Visualizer Bars */
+        .eq-bar {
+            width: 3px;
+            background: linear-gradient(180deg, #ffffff, #64748b);
+            border-radius: 3px;
+            animation: bounce 1.2s ease-in-out infinite alternate;
+        }
+        @keyframes bounce {
+            0% { height: 4px; }
+            100% { height: 24px; }
+        }
+        .eq-bar:nth-child(1) { animation-delay: 0.1s; }
+        .eq-bar:nth-child(2) { animation-delay: 0.3s; }
+        .eq-bar:nth-child(3) { animation-delay: 0.5s; }
+        .eq-bar:nth-child(4) { animation-delay: 0.2s; }
+        .eq-bar:nth-child(5) { animation-delay: 0.4s; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #27272a;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between items-center relative selection:bg-gray-700 selection:text-white px-4 py-8 md:py-12">
+
+    <!-- Particle Canvas Background -->
+    <canvas id="bgCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+    
+    <!-- Soft Ambient Radial Glows -->
+    <div class="fixed top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-slate-400/5 rounded-full blur-[140px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-10 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-slate-600/10 rounded-full blur-[160px] pointer-events-none z-0"></div>
+
+    <!-- MAIN CONTAINER -->
+    <main class="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center text-center space-y-10 my-auto">
+
+        <!-- LOGO & BRANDING HEADER -->
+        <header class="flex flex-col items-center justify-center space-y-2 select-none w-full">
+            
+            <!-- Monogram "JC" -->
+            <div class="relative group cursor-default">
+                <h1 class="font-script-jc text-7xl md:text-9xl text-silver-chrome leading-none transform transition-transform duration-700 group-hover:scale-105 filter drop-shadow-[0_10px_20px_rgba(255,255,255,0.15)]">
+                    JC
+                </h1>
+            </div>
+
+            <!-- Full Name "Juan Carlos Torres" -->
+            <div class="-mt-4 md:-mt-8">
+                <h2 class="font-script-name text-4xl sm:text-6xl md:text-7xl text-silver-chrome tracking-wide py-1 px-4 filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)]">
+                    Juan Carlos Torres
+                </h2>
+            </div>
+
+            <!-- Vintage Microphone & Divider Line -->
+            <div class="flex items-center justify-center w-full max-w-md my-4 space-x-4">
+                <div class="h-[1px] flex-1 bg-gradient-to-r from-transparent via-slate-500 to-slate-300 opacity-60"></div>
+                
+                <!-- SVG Vintage Chrome Microphone Icon -->
+                <div class="relative p-2 rounded-full border border-slate-700/60 bg-gradient-to-b from-slate-800/80 to-black shadow-lg">
+                    <svg class="w-7 h-7 md:w-8 md:h-8 text-slate-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                        <!-- Mic Body & Capsule Lines -->
+                        <rect x="9" y="2" width="6" height="11" rx="3" fill="url(#mic-grad)" stroke="currentColor" stroke-width="1.2"></rect>
+                        <line x1="9" y1="5" x2="15" y2="5" stroke="currentColor" stroke-opacity="0.6"></line>
+                        <line x1="9" y1="8" x2="15" y2="8" stroke="currentColor" stroke-opacity="0.6"></line>
+                        <!-- Mic Stand Arc -->
+                        <path d="M5 10a7 7 0 0 0 14 0" stroke="currentColor" stroke-width="1.4"></path>
+                        <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="1.5"></line>
+                        <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="1.5"></line>
+                        
+                        <!-- Gradient Definition inside SVG -->
+                        <defs>
+                            <linearGradient id="mic-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#ffffff" />
+                                <stop offset="50%" stop-color="#94a3b8" />
+                                <stop offset="100%" stop-color="#1e293b" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                
+                <div class="h-[1px] flex-1 bg-gradient-to-l from-transparent via-slate-500 to-slate-300 opacity-60"></div>
+            </div>
+
+            <!-- Subtitle "CANTANTE · SHOWMAN" -->
+            <p class="font-serif-subtitle text-xs sm:text-sm md:text-base text-slate-300 font-semibold tracking-[0.35em] uppercase text-silver-chrome">
+                CANTANTE &nbsp;·&nbsp; SHOWMAN
+            </p>
+        </header>
+
+        <!-- ANNOUNCEMENT BANNER -->
+        <section class="flex flex-col items-center space-y-3 max-w-xl">
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full border border-slate-600/40 glass-card badge-shimmer">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="text-xs font-medium tracking-widest text-slate-200 uppercase">Estreno Oficial En Preparación</span>
+            </div>
+            
+            <h3 class="text-2xl sm:text-3xl md:text-4xl font-light text-slate-100 tracking-tight">
+                Una Experiencia Musical <span class="font-semibold text-silver-chrome italic">Inolvidable</span>
+            </h3>
+            <p class="text-slate-400 text-xs sm:text-sm max-w-lg font-light leading-relaxed">
+                Estamos preparando la plataforma oficial para reservas, lanzamientos musicales exclusivos y fechas de presentaciones en vivo.
+            </p>
+        </section>
+
+        <!-- COUNTDOWN TIMER SECTION -->
+        <section class="w-full max-w-2xl my-4">
+            <div class="grid grid-cols-4 gap-2 sm:gap-4">
+                <!-- Days Card -->
+                <div class="glass-card glass-card-hover rounded-xl p-3 sm:p-5 flex flex-col items-center justify-center">
+                    <span id="days" class="text-2xl sm:text-4xl md:text-5xl font-bold text-silver-chrome font-mono">00</span>
+                    <span class="text-[10px] sm:text-xs text-slate-400 font-medium tracking-widest uppercase mt-1">Días</span>
+                </div>
+                <!-- Hours Card -->
+                <div class="glass-card glass-card-hover rounded-xl p-3 sm:p-5 flex flex-col items-center justify-center">
+                    <span id="hours" class="text-2xl sm:text-4xl md:text-5xl font-bold text-silver-chrome font-mono">00</span>
+                    <span class="text-[10px] sm:text-xs text-slate-400 font-medium tracking-widest uppercase mt-1">Horas</span>
+                </div>
+                <!-- Minutes Card -->
+                <div class="glass-card glass-card-hover rounded-xl p-3 sm:p-5 flex flex-col items-center justify-center">
+                    <span id="minutes" class="text-2xl sm:text-4xl md:text-5xl font-bold text-silver-chrome font-mono">00</span>
+                    <span class="text-[10px] sm:text-xs text-slate-400 font-medium tracking-widest uppercase mt-1">Minutos</span>
+                </div>
+                <!-- Seconds Card -->
+                <div class="glass-card glass-card-hover rounded-xl p-3 sm:p-5 flex flex-col items-center justify-center">
+                    <span id="seconds" class="text-2xl sm:text-4xl md:text-5xl font-bold text-silver-chrome font-mono">00</span>
+                    <span class="text-[10px] sm:text-xs text-slate-400 font-medium tracking-widest uppercase mt-1">Segundos</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- AMBIENT AUDIO PREVIEW PLAYER -->
+        <section class="glass-card rounded-2xl p-4 w-full max-w-lg flex items-center justify-between space-x-4 border border-slate-700/50">
+            <div class="flex items-center space-x-3">
+                <button id="audioToggleBtn" onclick="toggleAudioPreview()" class="w-11 h-11 rounded-full btn-chrome flex items-center justify-center text-slate-100 focus:outline-none shadow-md transform active:scale-95">
+                    <i id="audioIcon" class="fa-solid fa-play text-sm ml-0.5"></i>
+                </button>
+                <div class="text-left">
+                    <p class="text-xs font-semibold text-slate-200">Adelanto Instrumental Exclusive</p>
+                    <p id="audioStatusText" class="text-[11px] text-slate-400">Haz clic para escuchar el ambiente</p>
+                </div>
+            </div>
+
+            <!-- Sound Wave Animation -->
+            <div id="equalizer" class="flex items-end space-x-1 h-6 opacity-40 transition-opacity duration-300">
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+            </div>
+        </section>
+
+        <!-- EMAIL NOTIFICATION FORM -->
+        <section class="w-full max-w-md space-y-3">
+            <form id="subscribeForm" onsubmit="handleSubscribe(event)" class="relative flex flex-col sm:flex-row items-center gap-2">
+                <div class="relative w-full">
+                    <i class="fa-regular fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                    <input 
+                        type="email" 
+                        id="emailInput" 
+                        required 
+                        placeholder="Tu correo electrónico..." 
+                        class="w-full bg-slate-900/80 text-slate-100 placeholder-slate-500 text-sm rounded-xl pl-11 pr-4 py-3.5 border border-slate-700/70 focus:outline-none focus:border-slate-300 transition-colors shadow-inner"
+                    >
+                </div>
+                <button 
+                    type="submit" 
+                    class="w-full sm:w-auto px-6 py-3.5 text-xs font-bold tracking-widest text-slate-900 uppercase bg-gradient-to-r from-slate-100 via-slate-300 to-slate-400 hover:from-white hover:to-slate-200 rounded-xl shadow-lg transition-all transform active:scale-95 whitespace-nowrap"
+                >
+                    Notificarme
+                </button>
+            </form>
+            
+            <p id="formFeedback" class="text-xs text-emerald-400 font-medium hidden">
+                ¡Gracias! Te avisaremos tan pronto como abramos las puertas.
+            </p>
+        </section>
+
+        <!-- SOCIAL MEDIA LINKS -->
+        <section class="pt-2">
+            <p class="text-[11px] tracking-widest text-slate-400 uppercase mb-4">Sigue el show en redes sociales</p>
+            <div class="flex items-center justify-center space-x-3">
+                
+                <!-- Spotify -->
+                <a href="https://spotify.com" target="_blank" rel="noopener opacity" title="Spotify" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-slate-300 hover:text-emerald-400 hover:border-emerald-400/50 transition-all hover:-translate-y-1">
+                    <i class="fa-brands fa-spotify text-lg"></i>
+                </a>
+
+                <!-- YouTube -->
+                <a href="https://youtube.com" target="_blank" rel="noopener opacity" title="YouTube" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-slate-300 hover:text-red-500 hover:border-red-500/50 transition-all hover:-translate-y-1">
+                    <i class="fa-brands fa-youtube text-lg"></i>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://instagram.com" target="_blank" rel="noopener opacity" title="Instagram" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-slate-300 hover:text-pink-400 hover:border-pink-400/50 transition-all hover:-translate-y-1">
+                    <i class="fa-brands fa-instagram text-lg"></i>
+                </a>
+
+                <!-- Facebook -->
+                <a href="https://facebook.com" target="_blank" rel="noopener opacity" title="Facebook" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-slate-300 hover:text-blue-400 hover:border-blue-400/50 transition-all hover:-translate-y-1">
+                    <i class="fa-brands fa-facebook-f text-base"></i>
+                </a>
+
+                <!-- WhatsApp Booking -->
+                <a href="https://wa.me/" target="_blank" rel="noopener opacity" title="Contrataciones WhatsApp" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-slate-300 hover:text-green-400 hover:border-green-400/50 transition-all hover:-translate-y-1">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="relative z-10 text-center text-[11px] text-slate-500 mt-12 select-none">
+        <p>&copy; <span id="currentYear"></span> Juan Carlos Torres. Todos los derechos reservados.</p>
+        <p class="text-[10px] text-slate-600 mt-1">Management &amp; Contrataciones VIP</p>
+    </footer>
+
+    <script>
+        // Set dynamic current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        /* ===================================================
+           1. COUNTDOWN TIMER LOGIC
+           =================================================== */
+        // Set launch target date to 30 days from now
+        const targetDate = new Date();
+        targetDate.setDate(targetDate.getDate() + 30);
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate.getTime() - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = String(days).padStart(2, '0');
+                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+            } else {
+                document.getElementById('days').innerText = '00';
+                document.getElementById('hours').innerText = '00';
+                document.getElementById('minutes').innerText = '00';
+                document.getElementById('seconds').innerText = '00';
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        /* ===================================================
+           2. EMAIL SUBSCRIPTION FORM HANDLER
+           =================================================== */
+        function handleSubscribe(e) {
+            e.preventDefault();
+            const emailInput = document.getElementById('emailInput');
+            const feedback = document.getElementById('formFeedback');
+            
+            if (emailInput.value) {
+                feedback.classList.remove('hidden');
+                emailInput.value = '';
+                
+                setTimeout(() => {
+                    feedback.classList.add('hidden');
+                }, 5000);
+            }
+        }
+
+        /* ===================================================
+           3. BACKGROUND SILVER CANVAS PARTICLES
+           =================================================== */
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.8 + 0.3;
+                this.speedX = (Math.random() - 0.5) * 0.2;
+                this.speedY = -Math.random() * 0.4 - 0.1;
+                this.opacity = Math.random() * 0.5 + 0.1;
+                this.fade = Math.random() * 0.005 + 0.002;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.opacity -= this.fade;
+
+                if (this.opacity <= 0 || this.y < 0) {
+                    this.reset();
+                    this.y = canvas.height + 10;
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(220, 225, 235, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const count = Math.min(Math.floor(window.innerWidth / 15), 80);
+            for (let i = 0; i < count; i++) {
+                particles.push(new Particle());
+            }
+        }
+        initParticles();
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        /* ===================================================
+           4. WEB AUDIO SYNTHESIZER (AMBIENT SHOWMAN PREVIEW)
+           =================================================== */
+        let audioCtx = null;
+        let isPlaying = false;
+        let mainGain = null;
+        let synthInterval = null;
+
+        function toggleAudioPreview() {
+            const icon = document.getElementById('audioIcon');
+            const status = document.getElementById('audioStatusText');
+            const eq = document.getElementById('equalizer');
+
+            if (!isPlaying) {
+                startSynthesizedMusic();
+                isPlaying = true;
+                icon.className = 'fa-solid fa-pause text-sm ml-0';
+                status.innerText = 'Reproduciendo acordes VIP...';
+                eq.classList.remove('opacity-40');
+                eq.classList.add('opacity-100');
+            } else {
+                stopSynthesizedMusic();
+                isPlaying = false;
+                icon.className = 'fa-solid fa-play text-sm ml-0.5';
+                status.innerText = 'Haz clic para escuchar el ambiente';
+                eq.classList.remove('opacity-100');
+                eq.classList.add('opacity-40');
+            }
+        }
+
+        function startSynthesizedMusic() {
+            if (!audioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                audioCtx = new AudioContext();
+            }
+
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            mainGain = audioCtx.createGain();
+            mainGain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+            mainGain.connect(audioCtx.destination);
+
+            // Elegant Jazz / Lounge Chord sequence frequencies (Hz)
+            const chords = [
+                [261.63, 329.63, 392.00, 493.88], // Cmaj7
+                [220.00, 261.63, 329.63, 392.00], // Am7
+                [174.61, 220.00, 261.63, 329.63], // Fmaj7
+                [196.00, 246.94, 293.66, 349.23]  // G7
+            ];
+
+            let chordIndex = 0;
+
+            function playChord(notes) {
+                if (!isPlaying || !audioCtx) return;
+                
+                notes.forEach(freq => {
+                    const osc = audioCtx.createOscillator();
+                    const noteGain = audioCtx.createGain();
+
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+                    // Soft attack and release
+                    noteGain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+                    noteGain.gain.linearRampToValueAtTime(0.04, audioCtx.currentTime + 0.8);
+                    noteGain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 3.2);
+
+                    osc.connect(noteGain);
+                    noteGain.connect(mainGain);
+
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 3.3);
+                });
+            }
+
+            playChord(chords[0]);
+            synthInterval = setInterval(() => {
+                chordIndex = (chordIndex + 1) % chords.length;
+                playChord(chords[chordIndex]);
+            }, 3200);
+        }
+
+        function stopSynthesizedMusic() {
+            if (synthInterval) clearInterval(synthInterval);
+            if (mainGain && audioCtx) {
+                mainGain.gain.linearRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
+            }
+        }
+    </script>
+</body>
+</html>
